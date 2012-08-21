@@ -35,6 +35,9 @@ module SwitchUser
   mattr_accessor :redirect_path
   self.redirect_path = lambda { |request, params| request.env["HTTP_REFERER"] ? :back : root_path }
   
+  mattr_accessor :hide_guest
+  self.hide_guest = false
+  
   def self.setup
     yield self
   end

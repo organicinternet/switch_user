@@ -1,10 +1,14 @@
 module SwitchUserHelper
   def switch_user_select
     if available?
-      if current_user
-        options = "<option value=''>Guest</option>"
+      unless SwitchUser.hide_guest
+        if current_user
+          options = "<option value=''>Guest</option>"
+        else
+          options = "<option selected='selected' value=''>Guest</option>"
+        end
       else
-        options = "<option selected='selected' value=''>Guest</option>"
+        options = ""
       end
       SwitchUser.available_users.each do |scope, user_proc|
         current = send("current_#{scope}")

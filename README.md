@@ -2,6 +2,7 @@ switch_user
 ===========
 
 *Added controller as parameter to available_users proc*
+*Made Guest option configurable*
 
 Inspired from [hobo][0], switch_user provides a convenient way to switch current user that speeds up your development and reproduce user specified error on production.
 
@@ -94,6 +95,9 @@ By default, you can switch between Guest and all users in users table, you don't
       # redirect_path is a block, it returns which page will be redirected
       # after switching a user.
       config.redirect_path = lambda { |request, params| '/' }
+      
+      # switch off the Guest option
+      config.hide_guest = false
     end
 
 If the default configuration can't meet your requirement, you can define your customized configuration in <code>config/initializers/switch_user.rb</code>

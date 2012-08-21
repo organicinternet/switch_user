@@ -10,7 +10,7 @@ module SwitchUserHelper
         current = send("current_#{scope}")
         identifier = SwitchUser.available_users_identifiers[scope]
         name = SwitchUser.available_users_names[scope]
-        user_proc.call.each do |user|
+        user_proc.call(self).each do |user|
           if current and current.send(identifier) == user.send(identifier)
             options += "<option selected='selected' value='#{scope}_#{user.send(identifier)}'>#{user.send(name)}</option>"
           else

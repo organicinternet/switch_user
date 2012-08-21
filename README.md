@@ -1,6 +1,8 @@
 switch_user
 ===========
 
+*Added controller as parameter to available_users proc*
+
 Inspired from [hobo][0], switch_user provides a convenient way to switch current user that speeds up your development and reproduce user specified error on production.
 
 Use Case
@@ -98,7 +100,7 @@ If the default configuration can't meet your requirement, you can define your cu
 
 If you want to switch both available users and available admins
 
-    config.available_users = { :user => lambda { User.available }, :admin => lambda { Admin.available } }
+    config.available_users = { :user => lambda { |controller| User.available }, :admin => lambda { |controller| Admin.available } }
 
 If you want to use name column as the user identifier
 
